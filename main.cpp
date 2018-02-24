@@ -1,6 +1,4 @@
-// ConsoleApplication1.cpp: определяет точку входа для консольного приложения.
-//
-#include "stdafx.h"
+
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -259,7 +257,7 @@ int main()
 		matrix3.clearmem();
 		mtr1.close();
 		mtr2.close();
-		system("pause");
+		
 		exit(0);
 
 	}
@@ -303,7 +301,7 @@ int main()
 
 	}
 
-	system("pause");
+	
     return 0;
 }
 
