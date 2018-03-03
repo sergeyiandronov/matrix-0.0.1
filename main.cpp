@@ -26,7 +26,7 @@ void finit() {
 }
 
 class matrix_t {
-	int * * data;
+	int **data;
 	unsigned int rows;
 	unsigned int collumns;
 
