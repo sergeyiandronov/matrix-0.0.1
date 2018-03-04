@@ -57,7 +57,8 @@ public:
 				this -> data[i][j] = other.data[i][j];
 			}
 		}
-	}~matrix_t() {
+	}
+	~matrix_t() {
 		for (unsigned int i = 0; i < rows; ++i) {
 			delete[] data[i];
 		}
@@ -95,7 +96,7 @@ public:
 		result.create_matrix(other.collumns, rows);
 		for (unsigned int i = 0; i < rows; i++) {
 			for (unsigned int j = 0; j < other.collumns; j++) {
-				float y = 0;
+				int y = 0;
 				for (unsigned int z = 0; z < collumns; z++) {
 					y += data[i][z] * other.data[z][j];
 				}
