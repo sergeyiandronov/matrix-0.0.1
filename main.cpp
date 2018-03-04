@@ -9,11 +9,11 @@ using namespace std;
 void finit() {
 	ofstream fout;
 	fout.open("A.txt");
-	fout << "2, 3\n2 2 2\n2 2 2\n2 2 2";
+	fout << "3, 3\n2 2 2\n2 2 2\n2 2 2";
 	fout.close();
 
 	fout.open("B.txt");
-	fout << "2, 3\n1 1 1\n1 1 1\n1 1 1";
+	fout << "3, 3\n1 1 1\n1 1 1\n1 1 1";
 	fout.close();
 
 	fout.open("C.txt");
