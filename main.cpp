@@ -224,7 +224,6 @@ int main() {
 		matrix3.write(cout);
 		mtr1.close();
 		mtr2.close();
-		system("pause");
 
 		exit(0);
 	}
