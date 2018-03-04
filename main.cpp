@@ -208,7 +208,8 @@ int main() {
 	ifstream mtr1, mtr2;
 	matrix_t matrix1, matrix2;
 	if (!getcommandifile(mtr1, mtr2, com)) {
-
+                mtr1.close();
+		mtr2.close();
 		cout << "An error has occured while reading input data";
 		exit(0);
 	}
