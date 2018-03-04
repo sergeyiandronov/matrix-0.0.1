@@ -129,7 +129,7 @@ public:
 			stream.setstate(std::ios::failbit);
 			return stream;
 		}
-        data = new int *[rows];
+                data = new int *[rows];
 		for (unsigned int i = 0; i < rows; ++i) {
 			data[i] = new int[collumns];
 			for (unsigned int j = 0; j < collumns; ++j) {
