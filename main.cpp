@@ -37,7 +37,7 @@ public:
 		collumns = 0;
 	}
 
-	void create_matrix(unsigned int collumns,
+	matrix_t(unsigned int collumns,
 		unsigned int rows) {
 		data = new int *[rows];
 		for (unsigned int i = 0; i < rows; ++i) {
@@ -51,12 +51,15 @@ public:
 
 	}
 	matrix_t(const matrix_t & other) {
-		this -> create_matrix(other.collumns, other.rows);
-		for (unsigned int i = 0; i < rows; i++) {
-			for (unsigned int j = 0; j < collumns; j++) {
-				this -> data[i][j] = other.data[i][j];
+		data = new int *[other.rows];
+		for (unsigned int i = 0; i < other.rows; ++i) {
+			data[i] = new int[other.collumns];
+			for (unsigned int j = 0; j < other.collumns; ++j) {
+				data[i][j] = other.data[i][j];
 			}
 		}
+		this -> rows = other.rows;
+		this -> collumns = other.collumns;
 	}
 	~matrix_t() {
 		for (unsigned int i = 0; i < rows; ++i) {
@@ -66,9 +69,9 @@ public:
 
 	}
 	matrix_t add(matrix_t & other) {
-		matrix_t result;
+		
 		assert(collumns == other.collumns && rows == other.rows);
-		result.create_matrix(collumns, rows);
+		matrix_t result(collumns,rows);
 		for (unsigned int i = 0; i < rows; i++) {
 			for (unsigned int j = 0; j < collumns; j++) {
 				result.data[i][j] = data[i][j] + other.data[i][j];
@@ -79,9 +82,9 @@ public:
 	};
 
 	matrix_t sub(matrix_t & other) {
-		matrix_t result;
+	
 		assert(collumns == other.collumns && rows == other.rows);
-		result.create_matrix(collumns, rows);
+		matrix_t result(collumns,rows);
 		for (unsigned int i = 0; i < rows; i++) {
 			for (unsigned int j = 0; j < collumns; j++) {
 				result.data[i][j] = data[i][j] - other.data[i][j];
@@ -91,9 +94,9 @@ public:
 		return result;
 	}
 	matrix_t mul(matrix_t & other) {
-		matrix_t result;
+		
 		assert(collumns == other.rows);
-		result.create_matrix(other.collumns, rows);
+		matrix_t result(other.collumns,rows);
 		for (unsigned int i = 0; i < rows; i++) {
 			for (unsigned int j = 0; j < other.collumns; j++) {
 				int y = 0;
@@ -106,8 +109,8 @@ public:
 		return result;
 	}
 	matrix_t trans() {
-		matrix_t result;
-		result.create_matrix(rows, collumns);
+		
+		matrix_t result(rows, collumns);
 
 		for (unsigned int i = 0; i < collumns; i++) {
 			for (unsigned int j = 0; j < rows; j++) {
@@ -126,8 +129,16 @@ public:
 			stream.setstate(std::ios::failbit);
 			return stream;
 		}
-
-		this -> create_matrix(collumns, rows);
+        data = new int *[rows];
+		for (unsigned int i = 0; i < rows; ++i) {
+			data[i] = new int[collumns];
+			for (unsigned int j = 0; j < collumns; ++j) {
+				data[i][j] = 0;
+			}
+		}
+		this -> rows = rows;
+		this -> collumns = collumns;
+		
 		for (unsigned int i = 0; i < rows; i++) {
 			string new_row;
 			getline(stream, new_row);
