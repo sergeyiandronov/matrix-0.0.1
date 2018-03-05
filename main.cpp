@@ -68,7 +68,7 @@ public:
 		delete[] data;
 
 	}
-	matrix_t add(matrix_t & other) {
+	matrix_t add(const matrix_t & other) {
 		
 		assert(collumns == other.collumns && rows == other.rows);
 		matrix_t result(collumns,rows);
@@ -81,7 +81,7 @@ public:
 		return result;
 	};
 
-	matrix_t sub(matrix_t & other) {
+	matrix_t sub(const matrix_t & other) {
 	
 		assert(collumns == other.collumns && rows == other.rows);
 		matrix_t result(collumns,rows);
@@ -93,7 +93,7 @@ public:
 
 		return result;
 	}
-	matrix_t mul(matrix_t & other) {
+	matrix_t mul(const matrix_t & other) {
 		
 		assert(collumns == other.rows);
 		matrix_t result(other.collumns,rows);
